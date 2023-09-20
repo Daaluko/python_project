@@ -1,0 +1,10 @@
+{% extends "base.jinja"%}
+
+{% block content %}
+{% for city in cities%}
+<div>
+{{ city.name}} <p>in</p> {{country.name}}   
+</div>
+
+{% endfor%}
+{% endblock%}

@@ -5,6 +5,7 @@ from models.country import Country
 from app import db
 
 countries_blueprint = Blueprint("countries", __name__)
+    
 
 @countries_blueprint.route("/countries/new", methods=["GET"]) #button
 def new_country():
@@ -33,4 +34,4 @@ def update_country(id):
     country_to_be_edited.name = changecountry_name
     
     db.session.commit()
-    return redirect("/")
+    return redirect("/curvis")
