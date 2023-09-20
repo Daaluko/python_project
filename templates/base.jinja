@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Where to next?</title>
+        <title>Where To Next?</title>
     </head>
 
     <body>
-        <main> class="flex flex--row">
+        <main> 
             <nav>
-                <h1>Wherre to next?</h1>
                 <ul>
                     <li>
                         <a href="/new">New</a>
                     </li>
                     <li>
-                        <a href"/Current Bucket List</li>
-                    <li>Completed</li></ul>
-                
+                        <a href="/current">Current</a>
+                    </li>
+                    <li>
+                        <a href="visited">Visited</a>
+                    </li>
+                </ul>
+                <p><i>Safe travels!</i></p>
             </nav>
+            <section id="content">
+                {% block content%}
+
+                {% endblock%}
+            </section>
         </main>
     
     </body>
