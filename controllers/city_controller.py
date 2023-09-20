@@ -29,6 +29,8 @@ def add_city():
 
 @cities_blueprint.route("/cities/<id>/delete", methods=["POST"])
 def delete_city(id):
-    City.query.filter_by(id = id).delete()
+    City.query.get(id).delete()
     db.session.commit()
     return redirect("/cities")
+
+

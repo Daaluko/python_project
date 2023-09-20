@@ -29,9 +29,8 @@ def edit_country():
 @countries_blueprint.route("/countries/<id>", methods=["POST"])
 def update_country(id):
     changecountry_name = request.form["name"]
+    country_to_be_edited = Country.query.get(id)
+    country_to_be_edited.name = changecountry_name
     
-    newcountry_name = Country(name=changecountry_name)
-
-    Country.query.filter_by(id = id).update(newcountry_name)
     db.session.commit()
     return redirect("/countries")
