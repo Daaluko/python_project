@@ -1,7 +1,8 @@
 from flask import Flask, request, redirect, render_template
 from flask import Blueprint
-from models.city import City
-from models.country import Country
+from models import City, Country
+# from models.city import City
+# from models.country import Country
 from app import db
 
 countries_blueprint = Blueprint("countries", __name__)
@@ -9,7 +10,9 @@ countries_blueprint = Blueprint("countries", __name__)
 
 @countries_blueprint.route("/countries/new", methods=["GET"]) #button
 def new_country():
-    return render_template("/countries/new.jinja")
+    cities = City.query.all()
+    countries = Country.query.all()
+    return render_template("/countries/new.jinja", cities= cities, countries=countries)
 
 @countries_blueprint.route("/countries", methods=["POST"]) #page
 def add_country():
@@ -19,7 +22,7 @@ def add_country():
 
     db.session.add(save_country)
     db.session.commit()
-    return redirect("/cities/new")
+    return render_template("/cities/new.jinja")
 
 @countries_blueprint.route("/countries/<id>/edit", methods=["GET"]) #button
 def edit_country(): 

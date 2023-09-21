@@ -22,6 +22,7 @@ app.register_blueprint(countries_blueprint)
 
 
 
+
 @app.route('/')
 def home():
     return render_template("/index.jinja")
@@ -32,5 +33,24 @@ def new():
 
 @app.route('/curvis')
 def curvis():
-    return render_template("/curvis.jinja")
+    return render_template('/curvis.jinja')
 
+@app.route('/countries/new')
+def newcountry():
+    return render_template('/countries/new.jinja')
+
+@app.route('/cities/new')
+def newcity():
+    return render_template('/cities/new.jinja')
+
+@app.route('/countries')
+def countryredirect():
+    return render_template('/cities/new.jinja')
+
+@app.route('/whichcountry')
+def whichcountry():
+    return render_template('/countries/which.jinja')
+
+@app.route('/cities')
+def viewcities():
+    return render_template('/curvis.jinja')

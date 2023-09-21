@@ -1,17 +1,18 @@
 from flask import Flask, request, redirect, render_template
 from flask import Blueprint
-from models.city import City
-from models.country import Country
+from models import City, Country
+# from models.city import City
+# from models.country import Country
 from app import db
 
 cities_blueprint = Blueprint("cities",__name__)
 
 
 
-@cities_blueprint.route("/cities", methods=["GET"])
-def get_cities():
-    cities_from_db = City.query.all()
-    return render_template("/curvis.jinja", cities= cities_from_db)
+@cities_blueprint.route("/cities")
+def view_cities():
+    cities = City.query.all()
+    return render_template("/curvis.jinja", cities= cities)
 
 
 @cities_blueprint.route("/cities/new", methods=["GET"]) #button

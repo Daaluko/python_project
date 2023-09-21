@@ -1,7 +1,18 @@
 {% extends "base.jinja"%}
 
 {% block content %}
-<h1>Add new country</h1>
+<h1>Add a new country</h1>
+<h2><i></i></h2>
 
+{% for country in countries %}
+    <div>
+    {{ country.name }}
+    {% endfor %}
+    </div>
+<form action="/countries" method="post">
+    <label for="name">Name of country</label><br>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="Add country">
+</form>
 
 {% endblock%}
