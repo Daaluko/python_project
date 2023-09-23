@@ -12,7 +12,7 @@ cities_blueprint = Blueprint("cities",__name__)
 @cities_blueprint.route("/cities")
 def view_cities():
     cities = City.query.all()
-    return render_template("/curvis.jinja", cities= cities)
+    return render_template("index.jinja", cities= cities)
 
 
 @cities_blueprint.route("/cities/new", methods=["GET"]) #button
@@ -21,7 +21,7 @@ def new_city():
 
 
 
-@cities_blueprint.route("/cities/new", methods=["POST"]) #form on /cities/new.jinja
+@cities_blueprint.route("/cities", methods=["POST"]) #form on /cities/new.jinja
 def add_city():
     city_name = request.form["name"]
     country_id = request.form["countries"]
@@ -30,12 +30,12 @@ def add_city():
 
     db.session.add(save_city)
     db.session.commit()
-    return redirect("/curvis")
+    return redirect("/")
 
 @cities_blueprint.route("/cities/<id>/delete", methods=["POST"])
 def delete_city(id):
     City.query.get(id).delete()
     db.session.commit()
-    return redirect("/curvis")
+    return redirect("/")
 
 

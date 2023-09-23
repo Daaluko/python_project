@@ -7,9 +7,16 @@
 {% for country in countries %}
     <div>
     {{ country.name }}
-    {% endfor %}
+    <a href="/country/{{country.id}}">More info</a>
+    
+{% endfor %}
+    
+    
+    
     </div>
-<form action="/countries" method="post">
+
+
+<form action="/curvis" method="post">
     <label for="name">Name of country</label><br>
     <input type="text" id="name" name="name">
     <input type="submit" value="Add country">

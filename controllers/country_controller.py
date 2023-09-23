@@ -10,9 +10,9 @@ countries_blueprint = Blueprint("countries", __name__)
 
 @countries_blueprint.route("/countries/new", methods=["GET"]) #button
 def new_country():
-    cities = City.query.all()
+    
     countries = Country.query.all()
-    return render_template("/countries/new.jinja", cities= cities, countries=countries)
+    return render_template("/countries/new.jinja", countries=countries)
 
 @countries_blueprint.route("/countries", methods=["POST"]) #page
 def add_country():
@@ -22,7 +22,7 @@ def add_country():
 
     db.session.add(save_country)
     db.session.commit()
-    return render_template("/cities/new.jinja")
+    return render_template("/")
 
 @countries_blueprint.route("/countries/<id>/edit", methods=["GET"]) #button
 def edit_country(): 
@@ -37,4 +37,4 @@ def update_country(id):
     country_to_be_edited.name = changecountry_name
     
     db.session.commit()
-    return redirect("/curvis")
+    return redirect("/")

@@ -11,6 +11,10 @@
     <label for="name">Name of city</label><br>
     <input type="text" id="name" name="name">
     <input type="submit" value="Add city">
+    <input type="selected">
+    {% for country in countries%}
+    <option value="{{country.id}}">{{ country.name}} </option>
+{% endfor %}
 </form>
 
 

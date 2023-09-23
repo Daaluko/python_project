@@ -1,0 +1,40 @@
+{% extends "base.jinja"%}
+
+{% block content %}
+
+{% for country in countries %}
+    <div>
+    {{ country.name }}
+    {% endfor %}
+    </div>
+<form action="/countries" method="post">
+    <label for="name">Name of country</label><br>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="Add country">
+    <h2> Add a new city</h2>
+{% for city in cities %}
+    <div>
+    {{ city.name }}
+    {% endfor %}
+    </div>
+<form action="/cities" method="post">
+    <label for="name">Name of city</label><br>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="Add city">
+</form>
+
+
+</form>
+{% endblock%}
+
+
+{# <div>
+    <a href="countries/new">
+        <button>New country</button>
+    </a>
+</div>    
+<div>
+    <a href="whichcountry">
+        <button>New city</button>
+    </a>
+</div> #}
