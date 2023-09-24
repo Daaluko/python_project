@@ -1,18 +1,16 @@
 from flask import Flask, request, redirect, render_template
 from flask import Blueprint
 from models import City, Country
-# from models.city import City
-# from models.country import Country
 from app import db
 
 cities_blueprint = Blueprint("cities",__name__)
 
 
 
-@cities_blueprint.route("/cities")
-def view_cities():
-    cities = City.query.all()
-    return render_template("index.jinja", cities= cities)
+# @cities_blueprint.route("/cities")
+# def view_cities():
+#     cities = City.query.all()
+#     return render_template("index.jinja", cities= cities)
 
 
 @cities_blueprint.route("/cities/new", methods=["GET"]) #button
@@ -30,12 +28,12 @@ def add_city():
 
     db.session.add(save_city)
     db.session.commit()
-    return redirect("/")
+    return render_template("countries/show.jinja")
 
-@cities_blueprint.route("/cities/<id>/delete", methods=["POST"])
+@cities_blueprint.route("/cities/<int:id>/delete", methods=["POST"])
 def delete_city(id):
     City.query.get(id).delete()
     db.session.commit()
-    return redirect("/")
+    return redirect("/mybucketlist")
 
 

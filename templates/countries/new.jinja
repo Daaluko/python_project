@@ -1,25 +1,24 @@
 {% extends "base.jinja"%}
 
 {% block content %}
-<h1>Add a new country</h1>
-<h2><i></i></h2>
+<h1>Add country</h1>
+<form action="/countries" method="post">
+    <label for="name">Name of country:</label><br>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="Next">
+</form>
 
-{% for country in countries %}
+{% endblock%}
+
+{# {% for country in countries %}
     <div>
     {{ country.name }}
     <a href="/country/{{country.id}}">More info</a>
     
-{% endfor %}
+{% endfor %} #}
     
     
-    
-    </div>
+{#     
+    </div> #}
 
 
-<form action="/curvis" method="post">
-    <label for="name">Name of country</label><br>
-    <input type="text" id="name" name="name">
-    <input type="submit" value="Add country">
-</form>
-
-{% endblock%}

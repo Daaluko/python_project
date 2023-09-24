@@ -1,0 +1,9 @@
+{% extends "base.jinja"%}
+
+{% block content%}
+<h1>Edit country</h1>
+<form action="/countries/{{country.id}}>" method="post">
+    <label for="name">New country name:</label><br>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="Done">
+</form>

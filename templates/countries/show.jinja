@@ -1,0 +1,17 @@
+{% extends base.jinja %}
+
+{% block content %}
+<h1> {{country.name}} </h1>
+
+<ul>
+    {% for city in cities  %}
+    <li>{{city.name}} <a href="/deletecity">Delete</a></li>
+    {% endfor %}
+</ul>
+<a href="/addnewcity">Add city</a><br>
+
+
+<a href="/editcountry">Edit country</a>
+
+
+{% endblock %}

@@ -2,26 +2,29 @@
 
 {% block content %}
 
+<ul>
 {% for country in countries %}
-    <div>
+    <li>
     {{ country.name }}
+    <a href="/countries/{{country.id}}">More info</a>
+    </li>
     {% endfor %}
-    </div>
-<form action="/countries" method="post">
+</ul>    
+{# <form action="/countries" method="post">
     <label for="name">Name of country</label><br>
     <input type="text" id="name" name="name">
-    <input type="submit" value="Add country">
-    <h2> Add a new city</h2>
-{% for city in cities %}
+    <input type="submit" value="Add country"> #}
+    {# <h2> Add a new city</h2> #}
+{# {% for city in cities %}
     <div>
     {{ city.name }}
-    {% endfor %}
+    {% endfor %} #}
     </div>
-<form action="/cities" method="post">
+{# <form action="/cities" method="post">
     <label for="name">Name of city</label><br>
     <input type="text" id="name" name="name">
     <input type="submit" value="Add city">
-</form>
+</form> #}
 
 
 </form>
