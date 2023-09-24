@@ -14,9 +14,9 @@ countries_blueprint = Blueprint("countries", __name__)
 
 @countries_blueprint.route("/countries", methods=["POST"])
 def add_country():
-    country_name= request.form["name"]
+    country_name = request.form.get("name")
 
-    save_country= Country(name=country_name)
+    save_country = Country(name=country_name)
 
     db.session.add(save_country)
     db.session.commit()
@@ -41,5 +41,5 @@ def update_country(id):
 @countries_blueprint.route('/countries/<id>')
 def show(id):
     country = Country.query.get(id)
-    cities = City.query.join(Country).filter(Country.country_id == id)
+    cities = Country.query.join(City).filter(City.country_id == id)
     return render_template('/countries/show.jinja', country=country, cities=cities)

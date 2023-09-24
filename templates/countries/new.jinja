@@ -4,21 +4,11 @@
 <h1>Add country</h1>
 <form action="/countries" method="post">
     <label for="name">Name of country:</label><br>
-    <input type="text" id="name" name="name">
+    <input name="name" id="name" type="text" required>
     <input type="submit" value="Next">
 </form>
 
 {% endblock%}
 
-{# {% for country in countries %}
-    <div>
-    {{ country.name }}
-    <a href="/country/{{country.id}}">More info</a>
-    
-{% endfor %} #}
-    
-    
-{#     
-    </div> #}
 
 
