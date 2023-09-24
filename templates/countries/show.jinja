@@ -5,8 +5,15 @@
 
 <ul>
     {% for city in cities  %}
-    <li>{{city.name}} <a href="/deletecity">Delete</a></li>
+    <li>{{city.name}}
+    <p>
+        <form action="/cities/{{city.id}}/delete" method="post">
+        <input type="submit" value="Delete">
+        </form>
+    </p>
+    </li>
     {% endfor %}
+    
 </ul>
 <a href="/addnewcity">Add city</a><br>
 

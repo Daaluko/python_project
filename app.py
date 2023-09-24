@@ -48,9 +48,7 @@ def addnewcity():
 def cityfornewcountry():
     return render_template('cities/fornewcountry.jinja')
 
-@app.route('deletecity')
-def deletecity():
-    return render_template('/cities/delete.jinja')
+
 
 
 # @app.route('/countries/new')

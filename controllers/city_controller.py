@@ -23,8 +23,8 @@ def new_city():
 def add_city():
     city_name = request.form["name"]
     country_id = request.form["countries"]
-    
-    save_city= City(name=city_name, country_id=country_id)
+    visited = request.form[Null]
+    save_city= City(name=city_name, country_id=country_id, visited=True or False)
 
     db.session.add(save_city)
     db.session.commit()

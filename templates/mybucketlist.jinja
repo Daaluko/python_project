@@ -6,7 +6,8 @@
 {% for country in countries %}
     <li>
     {{ country.name }}
-    <a href="/countries/{{country.id}}">More info</a>
+    <p><a href="/countries/{{country.id}}">More info</a>
+    </p>
     </li>
     {% endfor %}
 </ul>    
