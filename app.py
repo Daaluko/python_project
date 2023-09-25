@@ -36,17 +36,12 @@ def bucketlist():
 def addcountry():
     return render_template('countries/new.jinja')
 
-# @app.route('/editcountry')
-# def editcountry():
-#     return render_template('/countries/edit.jinja')
 
 @app.route('/addnewcity')
 def addnewcity():
-    return render_template('cities/new.jinja')
+    countries = Country.query.all()
+    return render_template('cities/new.jinja', countries = countries)
 
-@app.route('/cityfornewcountry')
-def cityfornewcountry():
-    return render_template('cities/fornewcountry.jinja')
 
 
 

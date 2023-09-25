@@ -15,16 +15,16 @@ cities_blueprint = Blueprint("cities",__name__)
 
 @cities_blueprint.route("/cities/new", methods=["GET"]) #button
 def new_city():
-    country = Country.query.get(id)
-    return render_template("/cities/new.jinja", country = country)
+    countries = Country.query.all()
+    return render_template("/cities/new.jinja", countries = countries)
 
 
 
 @cities_blueprint.route("/cities", methods=["POST"]) #form on /cities/new.jinja
 def add_city():
     city_name = request.form["name"]
-    country_id = request.form.get("countries")
-    visited = request.form.get(False)
+    country_id = request.form["country_id"]
+    visited = request.form[False]
     save_city= City(name=city_name, country_id=country_id, visited=visited)
 
     db.session.add(save_city)

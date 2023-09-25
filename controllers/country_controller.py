@@ -19,9 +19,9 @@ def add_country():
     save_country = Country(name=country_name)
     
     db.session.add(save_country)
+    
     db.session.commit()
-    country = Country.query.get(id)
-    return render_template("/cities/fornewcountry.jinja", country=country)
+    return redirect("/mybucketlist")
 
 @countries_blueprint.route("/countries/<id>/edit", methods=["GET"])
 def edit_country(id): 
@@ -30,7 +30,7 @@ def edit_country(id):
 
     
 
-@countries_blueprint.route("/countries/<id>", methods=["POST"]) 
+@countries_blueprint.route("/countries/<int:id>", methods=["POST"]) 
 def update_country(id):
     changecountry_name = request.form.get("name")
     country_to_be_edited = Country.query.get(id)
