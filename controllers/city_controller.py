@@ -20,7 +20,7 @@ def new_city():
 
 
 
-@cities_blueprint.route("/cities", methods=["GET", "POST"])
+@cities_blueprint.route("/cities", methods=["POST"])
 def add_city():
     city_name = request.form["name"]
     country_id = request.form["country_id"]                                  # country_id = request.form.get("country.id")
