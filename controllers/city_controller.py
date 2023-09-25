@@ -15,7 +15,8 @@ cities_blueprint = Blueprint("cities",__name__)
 
 @cities_blueprint.route("/cities/new", methods=["GET"]) #button
 def new_city():
-    return render_template("/cities/new.jinja")
+    country = Country.query.get(id)
+    return render_template("/cities/new.jinja", country = country)
 
 
 

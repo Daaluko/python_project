@@ -12,15 +12,16 @@ countries_blueprint = Blueprint("countries", __name__)
 #     countries = Country.query.all()
 #     return render_template("/countries/new.jinja", countries=countries)
 
-@countries_blueprint.route("/countries", methods=["POST"])
+@countries_blueprint.route("/countries", methods=["GET","POST"])
 def add_country():
     country_name = request.form.get("name")
 
     save_country = Country(name=country_name)
-
+    
     db.session.add(save_country)
     db.session.commit()
-    return render_template("/cities/fornewcountry.jinja")
+    country = Country.query.get(id)
+    return render_template("/cities/fornewcountry.jinja", country=country)
 
 @countries_blueprint.route("/countries/<id>/edit", methods=["GET"])
 def edit_country(id): 
@@ -28,7 +29,7 @@ def edit_country(id):
     return render_template("/countries/edit.jinja", country=country)
 
     
-#<int:id> this is incase <id> doesn't work
+
 @countries_blueprint.route("/countries/<id>", methods=["POST"]) 
 def update_country(id):
     changecountry_name = request.form.get("name")
