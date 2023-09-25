@@ -12,7 +12,7 @@ countries_blueprint = Blueprint("countries", __name__)
 #     countries = Country.query.all()
 #     return render_template("/countries/new.jinja", countries=countries)
 
-@countries_blueprint.route("/countries", methods=["GET","POST"])
+@countries_blueprint.route("/countries", methods=["POST"])
 def add_country():
     country_name = request.form.get("name")
 
@@ -40,8 +40,8 @@ def update_country(id):
     return redirect("/mybucketlist")
 
 
-@countries_blueprint.route('/countries/<id>')
+@countries_blueprint.route("/countries/<id>")
 def show(id):
     country = Country.query.get(id)
-    cities = Country.query.join(City).filter(City.country_id == id)
-    return render_template('/countries/show.jinja', country=country, cities=cities)
+    cities = City.query.filter_by(country_id=id).all()
+    return render_template('/countries/show.jinja', country = country, cities = cities)

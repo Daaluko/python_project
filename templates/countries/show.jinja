@@ -4,16 +4,19 @@
 <h1> {{country.name}} </h1>
 
 <ul>
-    {% for city in cities  %}
-    <li>{{city.name}}
-    <p>
+    {% for city in cities %}
+    <li>
+    {{city.name}}
+    {% if city.visited %}
+        (Visited)
+    {% else %}
+        (Not Visited)
+        {% endif %}
         <form action="/cities/{{city.id}}/delete" method="post">
         <input type="submit" value="Delete">
         </form>
-    </p>
     </li>
     {% endfor %}
-    
 </ul>
 <a href="/addnewcity">Add city</a><br>
 

@@ -20,11 +20,13 @@ def new_city():
 
 
 
-@cities_blueprint.route("/cities", methods=["POST"]) #form on /cities/new.jinja
+@cities_blueprint.route("/cities", methods=["GET", "POST"])
 def add_city():
     city_name = request.form["name"]
-    country_id = request.form["country_id"]
-    visited = request.form[False]
+    country_id = request.form["country_id"]                                  # country_id = request.form.get("country.id")
+    visited = request.form.get("visited")
+    if visited == "on": visited = True 
+    else: visited = False
     save_city= City(name=city_name, country_id=country_id, visited=visited)
 
     db.session.add(save_city)
@@ -33,7 +35,9 @@ def add_city():
 
 @cities_blueprint.route("/cities/<int:id>/delete", methods=["POST"])
 def delete_city(id):
-    City.query.get(id).delete()
+    
+    city = City.query.get(id)
+    db.session.delete(city)
     db.session.commit()
     return redirect("/mybucketlist")
 

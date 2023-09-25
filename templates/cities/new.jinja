@@ -2,18 +2,18 @@
 
 {% block content %}
 <h1>Add city</h1>
-<form action="/cities/" method="post">
+<form action="/cities" method="post">
     <label for="name">Name of city:</label><br>
         <input type="text" id="name" name="name" required>
     <label for="country">Select a country:</label>
-        <select class="dropdown" name="country_id" id="country" required>
+        <select class="dropdown" name="country_id" id="country_id" required>
             {% for country in countries %}
             <option  value="{{ country.id }}">{{ country.name }}</option>
             {% endfor %} 
         </select>
     <label for="visited">Visited?</label>
-        <input type="checkbox" value=False name="visited">
-        <input type="submit" value="Done">
+        <input type="checkbox" id="visited" name="visited">
+    <input type="submit" value="Done">
 </form>
 
 {# {% for city in cities %}
