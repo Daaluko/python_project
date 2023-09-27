@@ -11,7 +11,10 @@
         (Visited)
     {% else %}
         (Not Visited)
-        {% endif %}
+        {% endif %} 
+        <form action="/cities/{{city.id}}" method="post">
+        <input type="submit" value="Toggle Visited">
+        </form>
         <form action="/cities/{{city.id}}/delete" method="post">
         <input type="submit" value="Delete">
         </form>

@@ -42,3 +42,11 @@ def delete_city(id):
     return redirect("/mybucketlist")
 
 
+@cities_blueprint.route("/cities/<int:id>", methods=["POST"])
+def update_city(id):
+    city = City.query.get_or_404(id)
+    city.visited = not city.visited
+    db.session.commit()
+    return redirect("/mybucketlist")
+
+# @cities_blueprint.route("/cities/<int:id>", methods=["POST"])

@@ -41,23 +41,3 @@ def addcountry():
 def addnewcity():
     countries = Country.query.all()
     return render_template('cities/new.jinja', countries = countries)
-
-
-
-
-
-# @app.route('/countries/new')
-# def newcountry():
-#     return redirect('/mybucketlist')
-
-# @app.route('/cities/new')
-# def newcity():
-#     return render_template('/cities/new.jinja')
-
-# @app.route('/countries')
-# def countryredirect():
-#     return render_template('/cities/new.jinja')
-
-# @app.route('/whichcountry')
-# def whichcountry():
-#     return render_template('/countries/which.jinja')
