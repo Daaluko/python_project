@@ -6,14 +6,7 @@ from app import db
 cities_blueprint = Blueprint("cities",__name__)
 
 
-
-# @cities_blueprint.route("/cities")
-# def view_cities():
-#     cities = City.query.all()
-#     return render_template("index.jinja", cities= cities)
-
-
-@cities_blueprint.route("/cities/new", methods=["GET"]) #button
+@cities_blueprint.route("/cities/new", methods=["GET"])
 def new_city():
     countries = Country.query.all()
     return render_template("/cities/new.jinja", countries = countries)
@@ -23,7 +16,7 @@ def new_city():
 @cities_blueprint.route("/cities", methods=["POST"])
 def add_city():
     city_name = request.form["name"]
-    country_id = request.form["country_id"]                                  # country_id = request.form.get("country.id")
+    country_id = request.form["country_id"]                                  
     visited = request.form.get("visited")
     if visited == "on": visited = True 
     else: visited = False
@@ -49,4 +42,3 @@ def update_city(id):
     db.session.commit()
     return redirect("/mybucketlist")
 
-# @cities_blueprint.route("/cities/<int:id>", methods=["POST"])

@@ -4,13 +4,7 @@ from models import City, Country
 from app import db
 
 countries_blueprint = Blueprint("countries", __name__)
-    
 
-# @countries_blueprint.route("/countries/new", methods=["GET"]) #button
-# def new_country():
-    
-#     countries = Country.query.all()
-#     return render_template("/countries/new.jinja", countries=countries)
 
 @countries_blueprint.route("/countries", methods=["POST"])
 def add_country():
