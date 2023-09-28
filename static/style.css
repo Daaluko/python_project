@@ -42,6 +42,7 @@ input[type=submit] {
     color: black;
     border-radius: 5px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 
@@ -70,6 +71,7 @@ input[type=checkbox] {
     color: #1c87c9;
     background-color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 
