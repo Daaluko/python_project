@@ -4,9 +4,9 @@
 
 <ul>
 {% for country in countries %}
-    <li>
+    <li class="country">
     {{ country.name }}
-    <p><a href="/countries/{{country.id}}">More info</a>
+    <p><a class="link" href="/countries/{{country.id}}">More info</a>
     </p>
     </li>
     {% endfor %}
